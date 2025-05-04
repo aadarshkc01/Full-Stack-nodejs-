@@ -8,7 +8,7 @@ const bookModel = (sequelize,DataTypes)=>{
         },
         price : {
             type : DataTypes.INTEGER,
-            allowNull : false,
+            // allowNull : false,
         },
         bookAuthor : {
             type : DataTypes.STRING,

@@ -16,7 +16,7 @@ exports.addBook = async function(req,res){
     // check if all data aako xa vane only proceed, else not proceed throw error in response
 
     await books.create({
-        bookName : bookNamess,
+        bookName : bookName,
         price : bookPrice,
         bookAuthor,
         bookGenre,
@@ -28,15 +28,32 @@ exports.addBook = async function(req,res){
     })
 }
 
-exports.deleteBook = function(req,res){
+exports.deleteBook = async function(req,res){
     // logic to delete book
+    const id = req.params.id
+    await books.destroy({
+        where :{
+            id
+        }
+    })
+
     res.json({
         message : "Book deleted successfully"
     })
 }
 
-exports.editBook = function(req,res){
+exports.editBook = async function(req,res){
     // logic to update book
+    //first ma kun id ko update garni ho
+    const id = req.params.id
+    //kk update garni tw.....
+    const{bookName,price,bookAuthor,bookGenre} = req.body
+    await books.update({bookName : bookName, price: price, bookAuthor : bookAuthor, bookGenre: bookGenre},{
+        where : {
+            id
+        }
+    })
+
     res.json({
         message : "Book updated successfully"
     })
