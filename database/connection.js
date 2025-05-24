@@ -4,7 +4,7 @@ const {Sequelize,DataTypes} = require("sequelize")
 // const Sequelize = sequelize.Sequelize
 // const DataTypes = sequelize.DataTypes
 
-const sequelize = new Sequelize(process.env.CS)
+const sequelize = new Sequelize("postgresql://postgres.zqvpuaoycinvjqdmacwj:hellonodejsproject@aws-0-ap-south-1.pooler.supabase.com:6543/postgres")
 
 sequelize.authenticate()
 .then(()=>{
@@ -21,7 +21,7 @@ db.sequelize = sequelize
 db.books = require("./models/book.model.js")(sequelize,DataTypes)
 // db.products = require("./models/product.model.js")(sequelize,DataTypes)
 
-sequelize.sync({alter : true}).then(()=>{
+sequelize.sync({alter : false}).then(()=>{
     console.log("Migrate vayo hai tw")
 })
 
