@@ -48,7 +48,7 @@ exports.editBook = async function(req,res){
     const id = req.params.id
     //kk update garni tw.....
     const{bookName,price,bookAuthor,bookGenre} = req.body
-    await books.update({bookName : bookName, price: bookPrice, bookAuthor : bookAuthor, bookGenre: bookGenre},{
+    await books.update({bookName : bookName, price: price, bookAuthor : bookAuthor, bookGenre: bookGenre},{
         where : {
             id
         }
